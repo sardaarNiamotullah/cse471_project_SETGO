@@ -1,0 +1,270 @@
+:root {
+  //theme color
+
+  --cMain: #139b0e;
+  --cMain-dark: #157800;
+  --cManin-light: #41ff1a;
+
+  --cSecondary: #941099;
+  --cSecondary-dark: #630078;
+  --cSecondary-light: #d81aff;
+
+  --cMatteBlack: #28282b;
+  --cLightGray: #d3d3d3;
+
+  //font color
+
+  --cWhite: white;
+  --cGray: gray;
+  --cBlack: black;
+  --cGolden: rgb(238, 182, 42);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+  @media only screen and (max-width: 500px) {
+    font-size: 50%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+.flexContainer {
+  height: 7vh;
+  width: 100%;
+  background: var(--cLightGray);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .brandLogo {
+    margin-left: 6%;
+    height: 4rem;
+    width: 4rem;
+    background: var(--cSecondary);
+
+    -webkit-mask-image: url(./SVG/map.svg);
+    mask-image: url(./SVG/map.svg);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+  }
+  .navDiv {
+    nav {
+      a:nth-child(2) {
+        margin: 0 2rem;
+      }
+      a {
+        text-decoration: none;
+        color: var(--cMatteBlack);
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+      a:hover {
+        color: var(--cBlack);
+      }
+    }
+  }
+  .userProfile {
+    margin-right: 6%;
+    .picContainer {
+      height: 3rem;
+      width: 3rem;
+      background: var(--cMatteBlack);
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        height: 3rem;
+        width: 3rem;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  height: 93vh;
+  background: #630078;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 2fr 1fr;
+  @media only screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.5fr 0.5fr 1fr;
+  }
+
+  .inputContainer {
+    background: var(--cMatteBlack);
+
+    order: 0;
+    @media only screen and (max-width: 800px) {
+      order: 2;
+    }
+
+    color: var(--cLightGray);
+
+    .textContent {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+
+      h1 {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      form {
+        text-align: center;
+      }
+      label {
+        display: inline-block;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      input {
+        margin-bottom: 1rem;
+        background: var(--cGray);
+        border: none;
+        border-radius: 3px;
+      }
+      #from {
+        width: 25%;
+      }
+      #to {
+        width: 25%;
+      }
+      #tobreak {
+        width: 40%;
+      }
+      #rebreak {
+        width: 40%;
+      }
+    }
+  }
+
+  .mapContainer {
+    order: 1;
+    @media only screen and (max-width: 800px) {
+      order: 0;
+    }
+
+    #map {
+      height: 100%;
+      width: 100%;
+      background: #d3d3d3;
+    }
+  }
+  .linemap {
+    background: var(--cLightGray);
+    position: relative;
+
+    order: 2;
+    @media only screen and (max-width: 800px) {
+      order: 1;
+    }
+    grid-column-start: 1;
+    grid-column-end: -1;
+
+    .fromto {
+      height: 7rem;
+      width: 7rem;
+      transform: translate(0%, -50%);
+      @media only screen and (max-width: 800px) {
+        height: 5rem;
+        width: 5rem;
+      }
+      @media only screen and (max-width: 500px) {
+        height: 4rem;
+        width: 4rem;
+      }
+
+      -webkit-mask-size: cover;
+      mask-size: cover;
+
+      position: absolute;
+
+      animation: upDown 1s ease-in-out infinite alternate;
+    }
+    .fromLogo {
+      top: 50%;
+      left: 5%;
+
+      background: var(--cMatteBlack);
+      -webkit-mask-image: url(./SVG/location.svg);
+      mask-image: url(./SVG/location.svg);
+    }
+    .toLogo {
+      top: 50%;
+      right: 5%;
+
+      background: var(--cSecondary);
+      -webkit-mask-image: url(./SVG/location.svg);
+      mask-image: url(./SVG/location.svg);
+    }
+
+    .line {
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(10px, 10px));
+      justify-content: space-around;
+      column-gap: 5px;
+
+      .places {
+        height: 10px;
+        border-radius: 50%;
+        background: var(--cWhite);
+      }
+    }
+
+    .travelLine {
+      position: absolute;
+      background: var(--cSecondary);
+      width: 70%;
+      height: 1rem;
+      left: 50%;
+      top: 30%;
+      transform: translate(-50%, 0%);
+      clip-path: polygon(99% 0, 100% 50%, 99% 100%, 0% 100%, 1% 50%, 0% 0%);
+      @media only screen and (max-width: 800px) {
+        width: 60%;
+      }
+    }
+    .returnLine {
+      position: absolute;
+      background: var(--cMatteBlack);
+      width: 70%;
+      height: 1rem;
+      left: 50%;
+      bottom: 30%;
+      transform: translate(-50%, 0%);
+      clip-path: polygon(100% 0, 99% 50%, 100% 100%, 1% 100%, 0 50%, 1% 0);
+      @media only screen and (max-width: 800px) {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@keyframes upDown {
+  0% {
+    transform: translate(0%, -50%) scale(.9);
+  }
+  100% {
+    transform: translate(0%, -50%) scale(1);
+  }
+}

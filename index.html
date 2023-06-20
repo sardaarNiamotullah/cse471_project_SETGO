@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script defer src="./scripts/script.js"></script>
+    <title>Setgo</title>
+  </head>
+  <body>
+    <main>
+      <header class="header">
+        <div class="flexContainer">
+            <div class="brandLogo"></div>
+            <div class="navDiv">
+                <nav>
+                    <a href="#">About</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Contact</a>
+                </nav>
+            </div>
+            <div class="userProfile">
+                <div class="picContainer">
+                    <img src="./css/SVG/sardaarNiamotullah.jpg" alt="user's img">
+                </div>
+            </div>
+        </div>
+      </header>
+      <div class="container">
+        <div class="mapContainer"><div id="map"></div></div>
+        <div class="linemap">
+          <div class="fromLogo fromto"></div>
+          <div class="toLogo fromto"></div>
+          <div class="travelLine line"></div>
+          <div class="returnLine line"></div>
+        </div>
+        <div class="inputContainer">
+          <div class="textContent">
+            <h1>You choose the place, we will guide you there...</h1>
+            <form>
+              <label for="from">From</label><br />
+              <input type="text" id="from" name="to" /><br />
+              <label for="to">To</label><br />
+              <input type="text" id="to" name="to" /><br />
+
+              <label for="tobreak">Where you want to stop on the way...</label
+              ><br />
+              <input type="text" id="tobreak" name="tobreak" /><br />
+              <label for="retbreak"
+                >Where you want to stop on the way back...</label
+              ><br />
+              <input type="text" id="retbreak" name="retbreak" /><br />
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
